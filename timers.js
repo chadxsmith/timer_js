@@ -25,7 +25,7 @@ function incrementTime(){
 
 //Functions (to increment the time by interval)
 function startTime() {
-         increment = setInterval(incrementTime, 1000);
+         increment = setInterval(incrementTime, 1000); // incrementTime is referencing itself, to be called in line 17 
 }
 
 //Functions  to pause time
