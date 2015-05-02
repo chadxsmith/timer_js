@@ -6,38 +6,34 @@ var reset = document.getElementById('reset')
 var increment;
 
 // Time
-var seconds = 0
+seconds = 0
+minutes = 0
+
 
 //Event Listeners
 start.addEventListener("click", startTime)
 pause.addEventListener("click", pauseTime)
 reset.addEventListener("click", resetTime)
 
-//Functions (to increment the time)
-function incrementTime(){
-    document.getElementById("timer").innerHTML = "Stop Watch:" + seconds;
-    seconds++;
+//Functions
+function startTime(){
+
+      increment = setInterval(function() {  //setInterval is putting a batter in your watch
+          document.getElementById("timer").innerHTML = minutes + ":" + seconds;
+          seconds++;
+          if (seconds === 60) {
+            minutes++;
+            seconds = 0
+          }
+      }, 1);
+
 }
 
-
-
-
-
-//Functions (to increment the time by interval)
-function startTime() {
-         increment = setInterval(incrementTime, 1000); // incrementTime is referencing itself, to be called in line 17 
-}
-
-//Functions  to pause time
 function pauseTime() {
-          clearInterval(increment)  //clearInterval is like pulling out a battery in your watch. thus it cancels the repeated action
+      clearInterval(increment)  //clearInterval is pulling the battery out of your watch
 }
 
-
-// Functions to reset time
 function resetTime() {
-          seconds = 0
+      minutes = 0
+      seconds = 0
 }
-
-
-//Incrementer
